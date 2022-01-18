@@ -30,15 +30,18 @@
 
         - A static class attribute can be created by adding static keyword before the data type like this:
 
-            ```static data_type variable_name```
+            ```c++
+            static data_type variable_name
+            ```
 
     - Statice Class Function
 
         - A static class function can be created in the same way by adding a static keyword before it. In this case, before the return type like this:
-
-            ```static return_type function_name(params) {
-                    //Function logic
-                }
+            
+            ```c++
+            static return_type function_name(params) {
+                //Function logic
+            }
             ```
 
     - There are certain class members(attributes & functions) which we may want to access without creating an object of that class.
