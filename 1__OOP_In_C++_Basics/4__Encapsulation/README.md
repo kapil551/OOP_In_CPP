@@ -210,5 +210,29 @@
 
     - Note that ```this->``` is mandatory only when we've another variable with the same name as a class member, i.e., when there is ambiguity between a variable name and a class member. This is why we didn't have to use this-> when we were using a different parameter name.
 
+5. ```getters``` and ```setters```:
+
+    - It is always a good idea to keep all the class attributes as private. As we have seen in the previous section, we can expose an attribute, say theme, like this:
+
+        ```c++
+            class CalculatorApp {
+            private:
+                string theme;
+            public:
+                CalculatorApp (string theme) {
+                    this->theme = theme;
+                }
+
+                string getTheme() {
+                    return this->theme;
+                }
+
+                void setTheme(string theme) {
+                    this->theme = theme;
+                }
+            };
+        ```
+
+    - These methods are commonly known as ```getters``` and ```setters```. They are widely used in commercial applications where object-oriented programming is used.
 
 
