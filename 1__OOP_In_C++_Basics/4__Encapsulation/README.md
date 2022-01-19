@@ -110,3 +110,105 @@
     
     - ```In C++, all class members are by default private. If we do not specify public/private then the class member is treated as private.```
 
+3. Pointer to Class:
+
+    - As we've previously learned that we can access different properties of an object like this:
+    
+        ```c++
+            object.property
+        ```
+    - This is known as the dot member selection operator (or simply Dot Operator). It is used to access a class member through the object.
+
+    - Just like variables, objects are also stored in memory and take up some space. Since they are stored in memory, they will also have an address at which they are stored. 
+    
+    - To get the address of a variable, we use a pointer. Similarly, we can create pointers to class objects as well.
+
+    ```c++
+        Phone phone_var("Apple", "iPhone 11", 4, 64);   
+        Phone *ptr = &phone_var;
+    ```
+
+    - Here ptr is a pointer variable of type Phone* and points to the address of phone_var.
+
+    - Similar to how we can access class members of an object through the dot member selection operator, we can access them through the arrow member selection operator if we've a pointer to the object.
+
+    ```c++
+        ClassName object;
+        ClassName *obj_ptr = &object;
+        cout << obj_ptr->attribute_name
+    ```
+
+    ```c++
+        Phone phone_var("Apple", "iPhone 11", 4, 64);
+        cout << phone_var.brand << endl; //This will print Apple
+        Phone *phone_ptr = &phone_var;
+        cout << phone_ptr->brand << endl; //This will print Apple
+    ```
+
+    - Arrow member selection operator (or simply Arrow Operator) is used to access a class member through a pointer to an object.
+
+    - Note that arrow operators can be used on a class pointer but not on pointers of primitive data types (int, float, etc).
+
+4. ```this``` keyword/pointer:
+
+    - As you must have noticed that while passing a parameter to a constructor or any other class function, we have been using a parameter name that is different from the actual property name.
+
+    - Examples:
+        
+        ```c++
+            Phone (string brandValue, string modelValue, int ramValue, int storageValue) {
+                brand = brandValue;
+                model = modelValue;
+                ram = ramValue;
+                storage = storageValue;
+            }
+            void setBrand(string brandValue) {
+                brand = brandVal;
+            }
+        ```
+    
+    - We have been using variable names like brandValue, modelValue, ramValue, storageValue, etc instead of brand, model, ram, storage. We are doing to avoid something like this:
+
+        //Note that this will not work
+        ```c++
+        Phone (string brand, string model, int ram, int storage) {
+            brand = brand;
+            model = model;
+            ram = ram;
+            storage = storage;
+        }
+        ```
+    
+    - Example of ``this`` pointer
+
+        ```c++
+            Phone (string brand, string model, int ram, int storage) {
+                this->brand = brand;
+                this->model = model;
+                this->ram = ram;
+                this->storage = storage;
+            }
+        ```
+        ```c++
+            void setBrand(string brand) {
+                this->brand = brand;
+            }
+        ```
+
+    - Here, ``this`` pointer refers to a pointer to the actual object on which the function is being called. In the case of a constructor, it is the pointer to the object that will be created by the constructor.
+
+    - In the above example where we're doing:
+
+        ```c++
+            this->brand = brand;
+        ```
+    
+    - ```this->brand`` denotes the brand attribute of the object
+    - ```brand``` denotes the function parameter 
+    
+    - ```this``` pointer can be used to reference the object only inside its class. We can use this along with an arrow operator anywhere inside the class to access or modify any attribute in the object or to call a method internally.
+
+    - Note that ```this->``` is mandatory only when we've another variable with the same name as a class member, i.e., when there is ambiguity between a variable name and a class member. This is why we didn't have to use this-> when we were using a different parameter name.
+
+
+
