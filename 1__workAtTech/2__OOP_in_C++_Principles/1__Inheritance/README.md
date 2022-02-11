@@ -172,3 +172,24 @@
     - Here we mention the base classes as comma-separated-values with the inheritance-access-specifier. The constructors are also mentioned comma-separated with the required parameters.
 
     - In this particular example, CameraPhone does not have any property of its own and so we've not mentioned anything inside the constructor method. If there would have been a property in CameraPhone which was not inherited from its base classes, we can initialize it in the constructor just like we have been doing previously.
+
+4. Mulitlevel Inheritance:
+
+    - In Single Inheritance, there is a derived class which extends a base class whereas the base class is standalone and does not extend anything.
+    Similar to Single Inheritance, we can have Multi-level Inheritance as well where the base class extends some other base class.
+
+    - Example
+
+        - Every Phone is-a ElectronicDevice
+        - Every CameraPhone is-a Phone
+
+    - This can be represented as:
+
+        - Here Phone extends ElectronicDevice and CameraPhone extends Phone.
+
+- ![](multilevel_inheritance.PNG)
+
+    - The code would look something like this:
+
+- ![](multilevel_inheritance.PNG)
+
