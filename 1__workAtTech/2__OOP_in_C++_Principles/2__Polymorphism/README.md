@@ -615,3 +615,134 @@
       ```
 
     - This is just an FYI. In general, we might not have to do this.
+
+6. Class Templates:
+
+    - Let's create an Array class which contains an integer array and expose a few methods to work with the array. Go through the below code properly.
+
+    - ```c++
+            #include <bits/stdc++.h>
+            using namespace std;
+            class ArrayClass {
+            private:
+                int* arr;
+                int current_size = 0;
+                int max_size;
+            public:
+                ArrayClass(int max_size) {
+                    this->max_size = max_size;
+                    arr = new int[max_size];
+                }
+                
+                void insert(int element) {
+                    arr[current_size] = element;
+                    current_size++;
+                }
+
+                int get_at(int index) {
+                    return arr[index];
+                }
+                
+                void print() {
+                    for (int iterator = 0; iterator < current_size; iterator++) {
+                        cout << arr[iterator] << " ";
+                    }
+                    cout << endl;
+                }
+            };
+
+            int main() {
+                // your code goes here
+                ArrayClass array(10);
+                array.insert(5);
+                array.insert(6);
+                array.insert(7);
+                array.insert(8);
+                array.print();
+                cout << array.get_at(2);
+                return 0;
+            }
+      ```
+    
+    - Let's look at what is happening here:
+
+        - The Array class takes the max_size in the constructor and creates an array with that size.
+        - The insert method takes an element and adds it at the last index (current_size) and increments the current_size.
+        - The get_at methods takes an index and returns the element at that index.
+        - The print method prints the array.
+
+    - Now, we have a class for int arrays. What if we want to create similar classes for arrays of other data types as well?
+
+    - Similar to function templates, we can also have class templates. Just like function templates, class templates allow us to create template data types and use them inside the class to make the class generic.
+
+    - Let's templatize the above code to create array of any data type (could be int, float as well as Employee or any other class).
+
+    - Here, we have just replaced int with T wherever int was mentioned in the context of array element.
+
+    - ```c++
+
+            template<class T>
+            class ArrayClass {
+            private:
+                T* arr;
+                int current_size = 0;
+                int max_size;
+            public:
+                ArrayClass(int max_size) {
+                    this->max_size = max_size;
+                    arr = new T[max_size];
+                }
+                
+                void insert(T element) {
+                    arr[current_size] = element;
+                    current_size++;
+                }
+
+                T get_at(int index) {
+                    return arr[index];
+                }
+                
+                void print() {
+                    for (int iterator = 0; iterator < current_size; iterator++) {
+                        cout << arr[iterator] << " ";
+                    }
+                    cout << endl;
+                }
+            };
+      ```
+    
+    - Everything looks fine, right?
+
+    - There is one major issue. When we create the array object like this:
+
+    - ```c++
+            ArrayClass array(10);
+      ```
+
+    - The class won't be able to implicitly find out what is the data type of T. It could be int or float or anything. It will be unknown until a function call is made where T is present in parameters (In this case, insert method).
+
+    - So, how do we fix it?
+
+    - We have already learned in the previous section how to explicitly mention the data type while calling a template function like this:
+
+    - ```c++
+            max_num<int>(firstInt, secondInt)
+      ```
+
+    - The same thing can be done here as well like this:
+
+        - **ArrayClass<int> array(10);**
+        - **ArrayClass<float> array2(10);**
+        - **ArrayClass<Employee> array3(10);**
+
+    - Class Templates are very commonly used in C++ Standard Template Library (STL).
+
+7. Templates:
+
+    - Both function templates and class templates allow us to write generic code as in functions and class operating on generic types. Generic programming is a style of computer programming in which code is written in terms of types to-be-specified-later as we have been doing in this chapter by adding a template data-type/class.
+
+    - The C++ Standard Library includes the Standard Template Library or STL that provides a framework of templates for common data structures and algorithms.
+
+    - This type of polymorphism is also known as parametric polymorphism.
+
+    - Just like in function overloading and operator overloading, the actual function/class to use is determined at compile time in case of templates as well and so templates is also a way to achieve compile-time polymorphism.
