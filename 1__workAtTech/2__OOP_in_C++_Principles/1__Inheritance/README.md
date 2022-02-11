@@ -251,3 +251,41 @@
             };
       ```
 
+6. access specifier: ```protected```:
+
+    - As we have learnt previously that a derived class cannot access the private members of the base class. What if we want to use those members in the derived class?
+
+    - One solution is to make that class member as public instead of private.
+
+    - But if we do that, we will be exposing that property for any other class to access and compromising on encapsulation.
+
+    - To resolve this, C++ provides us with another access specifier: protected.
+
+    - Example:
+
+    - ```c++
+
+            class ElectronicDevice {
+
+                protected:
+                    string brand;
+                    string model;
+                public:
+                    ElectronicDevice (string brand, string model) {
+                        this->brand = brand;
+                        this->model = model;
+                    }
+                    .
+                    .
+                    .
+                    .
+            };
+      ```
+    
+    - When a class has a particular class member set as protected, the member is accessible to that particular class and any other class which inherits that base class.
+
+    - Now, in the following relationship, ram and storage will be accessible in CameraPhone but not in the main method. Here, # represents protected.
+
+- ![](protected.PNG)
+
+- ![](protected1.PNG)
