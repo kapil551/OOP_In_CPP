@@ -127,3 +127,48 @@
     - There can be any number of derived classes and each derived class can have properties different from one another. The code for this will be exactly the same as Single Inheritance.
 
 ![](hierarchical_inheritance1.PNG)
+
+3. Multiple Inheritance:
+
+    - We have seen the following relationship:
+
+    - Every CameraPhone is-a Phone
+
+    - While this is true, it should be noted that the following relationship is also true:
+    - Every CameraPhone is-a Camera
+
+    - Therefore, we can say that:
+    - Every CameraPhone is-a Phone as well is-a Camera
+
+    - This type of relationship where a class inherits multiple base classes is known as multiple inheritance. 
+    
+    - It can be represented as:
+
+![](multiple_inheritance.PNG)
+
+- The code would look something like this:
+
+    - ```c++
+            class Phone {
+                .
+                .
+                .
+            };
+
+            class Camera {
+                .
+                .
+                .
+            };
+
+            class CameraPhone: public Phone, public Camera {
+                public:
+                    CameraPhone(string brand, string model, int ram, int storage, double resolution): Phone(brand, model, ram, storage), Camera(resolution) {
+                    }
+            };
+
+      ```
+    
+    - Here we mention the base classes as comma-separated-values with the inheritance-access-specifier. The constructors are also mentioned comma-separated with the required parameters.
+
+    - In this particular example, CameraPhone does not have any property of its own and so we've not mentioned anything inside the constructor method. If there would have been a property in CameraPhone which was not inherited from its base classes, we can initialize it in the constructor just like we have been doing previously.
