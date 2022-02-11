@@ -117,3 +117,13 @@
     - This is also known as ```Single Inheritance``` which is a type of Inheritance where one class inherits a single class only.
 
 ![](inheritance_uml_diagram.PNG)
+
+2. Hierarchical Inheritance:
+
+    - In Single Inheritance, we had one class inheriting from another class. Similarly, we have Hierarchical Inheritance in which multiple classes inherit a single base class.
+
+![](hierarchical_inheritance.PNG)
+
+    - There can be any number of derived classes and each derived class can have properties different from one another. The code for this will be exactly the same as Single Inheritance.
+
+![](hierarchical_inheritance1.PNG)
